@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.util.LinkedList;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
@@ -25,8 +26,12 @@ public class SubPanel extends JPanel {
     MainFrame mainFrame;
     String string;
 
+    LinkedList<LinkedList<String>> report;
 
-    public SubPanel(MainFrame mf, String str) {
+    static public String text;
+
+
+    public SubPanel(MainFrame mf, String str, LinkedList<LinkedList<String>> report) {
         mainFrame = mf;
         string = str;
 
@@ -120,8 +125,11 @@ public class SubPanel extends JPanel {
 
                 if (select == JOptionPane.YES_OPTION) {
 
+                    text = textCheckNum.getText();
                     mainFrame.reloadPanel(mainFrame.PanelNames[2]);
                     panelChangeToSubSubPanel(mainFrame.PanelNames[2]);
+
+
 
                 } else if (select == JOptionPane.NO_OPTION) {
                 }
@@ -130,6 +138,8 @@ public class SubPanel extends JPanel {
             }
         });
         add(btnCheckNum, gridBagConstraints);
+
+        this.report = report;
 
     }
 

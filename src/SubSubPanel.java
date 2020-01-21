@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.LinkedList;
 
 public class SubSubPanel extends JPanel{
 
@@ -9,8 +10,9 @@ public class SubSubPanel extends JPanel{
     MainFrame mainFrame;
     String string;
     JButton newRequest;
+    LinkedList<LinkedList<String>> report;
 
-    public SubSubPanel(MainFrame mf,String str){
+    public SubSubPanel(MainFrame mf, String str, LinkedList<LinkedList<String>> report){
         mainFrame=mf;
         string=str;
         this.setName("subsubPanel");
@@ -18,7 +20,7 @@ public class SubSubPanel extends JPanel{
         this.setLayout(new GridBagLayout());
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
 
-        label = new JLabel("ご利用ありがとうございました");
+        label = new JLabel(MainFrame.judge_Delivery_State(SubPanel.text));
         label.setFont(new Font(Font.DIALOG_INPUT, Font.BOLD, 35));
         gridBagConstraints.anchor=GridBagConstraints.CENTER;
         gridBagConstraints.gridx=0;
@@ -60,7 +62,7 @@ public class SubSubPanel extends JPanel{
         });
         add(button,gridBagConstraints);
 
-
+        this.report = report;
 
 
     }

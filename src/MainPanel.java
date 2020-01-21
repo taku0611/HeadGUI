@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.LinkedList;
 import javax.swing.*;
 
 public class MainPanel extends JPanel {
@@ -11,7 +12,9 @@ public class MainPanel extends JPanel {
     JLabel jLabel;
     JLabel title;
 
-    public MainPanel(MainFrame mf, String str) {
+    LinkedList<LinkedList<String>> report;
+
+    public MainPanel(MainFrame mf, String str, LinkedList<LinkedList<String>> report) {
         mainFrame = mf;
         string = str;
         this.setName("mainPanel");
@@ -58,6 +61,8 @@ public class MainPanel extends JPanel {
             }
         });
         add(btnEnter, gridBagConstraints);
+
+        this.report = report;
 
     }
     public void panelChangeToSubPanel(String toPanelName) {
